@@ -7,7 +7,7 @@
           class="upload-demo"
           drag
           action="/api/upload"
-          :on-success="(response, file) => handleWordsSuccess(response, file)"
+          :on-success="(response: any, file: any) => handleWordsSuccess(response, file)"
           :on-error="handleError"
           :before-upload="beforeUpload"
           :on-remove="handleRemove"
@@ -33,7 +33,7 @@
           class="upload-demo"
           drag
           action="/api/upload"
-          :on-success="(response, file) => handleTranslationsSuccess(response, file)"
+          :on-success="(response: any, file: any) => handleTranslationsSuccess(response, file)"
           :on-error="handleError"
           :before-upload="beforeUpload"
           :on-remove="handleRemove"
@@ -221,7 +221,7 @@ const handleSubmit = async () => {
     lock: true,
     text: '正在提交并生成优化建议，请稍候...',
     background: 'rgba(255, 255, 255, 0.7)',
-    target: document.querySelector('.translations-list') // 只遮罩表格区域
+    target: document.querySelector('.translations-list') as HTMLElement || undefined // 只遮罩表格区域
   })
   loading.value = true
   const payload = translations.value.map(row => ({
@@ -270,14 +270,17 @@ const handleExport = () => {
   const ws = XLSX.utils.aoa_to_sheet(wsData)
 
   // 1. 设置所有单元格自动换行
-  const range = XLSX.utils.decode_range(ws['!ref'])
-  for (let R = range.s.r; R <= range.e.r; ++R) {
-    for (let C = range.s.c; C <= range.e.c; ++C) {
-      const cell_address = XLSX.utils.encode_cell({ r: R, c: C })
-      if (!ws[cell_address]) continue
-      if (!ws[cell_address].s) ws[cell_address].s = {}
-      if (!ws[cell_address].s.alignment) ws[cell_address].s.alignment = {}
-      ws[cell_address].s.alignment.wrapText = true
+  const ref = ws['!ref']
+  if (ref) {
+    const range = XLSX.utils.decode_range(ref)
+    for (let R = range.s.r; R <= range.e.r; ++R) {
+      for (let C = range.s.c; C <= range.e.c; ++C) {
+        const cell_address = XLSX.utils.encode_cell({ r: R, c: C })
+        if (!ws[cell_address]) continue
+        if (!ws[cell_address].s) ws[cell_address].s = {}
+        if (!ws[cell_address].s.alignment) ws[cell_address].s.alignment = {}
+        ws[cell_address].s.alignment.wrapText = true
+      }
     }
   }
 

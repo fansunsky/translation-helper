@@ -6,17 +6,12 @@ from openai import OpenAI
 from werkzeug.utils import secure_filename
 import pdfplumber
 from collections import OrderedDict
-import pytesseract
 import numpy as np
-from bs4 import BeautifulSoup
 import json
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import sqlite3
-
-# 设置 tesseract 路径
-pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'  # macOS 默认路径
 
 def init_db():
     """初始化数据库，创建必要的表"""

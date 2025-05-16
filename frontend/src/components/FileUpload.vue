@@ -6,7 +6,7 @@
         <el-upload
           class="upload-demo"
           drag
-          action="http://localhost:5000/api/upload"
+          action="/api/upload"
           :on-success="(response, file) => handleWordsSuccess(response, file)"
           :on-error="handleError"
           :before-upload="beforeUpload"
@@ -32,7 +32,7 @@
         <el-upload
           class="upload-demo"
           drag
-          action="http://localhost:5000/api/upload"
+          action="/api/upload"
           :on-success="(response, file) => handleTranslationsSuccess(response, file)"
           :on-error="handleError"
           :before-upload="beforeUpload"
@@ -230,7 +230,7 @@ const handleSubmit = async () => {
     my_en_contents: row.my_en_contents
   }))
   try {
-    const res = await axios.post('http://localhost:5000/api/submit-translation', { data: payload })
+    const res = await axios.post('/api/submit-translation', { data: payload })
     if(res.data && Array.isArray(res.data.data)) {
       translations.value = res.data.data
       submitted.value = true

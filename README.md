@@ -58,8 +58,11 @@ npm install
 npm run dev
 ```
 
-测试上传单词的示例文件:
-测试上传英汉对照的示例文件:
+测试上传单词的示例文件:[词汇表](https://resource-tx-cdn.xiaoeeye.com/appvod604qb9206/file/b_u_ck8n6b6ps1bshnkerp00/m1dtmema9n12qg.pdf?download_name=%E8%AF%8D%E6%B1%87%E8%A1%A8%E7%A4%BA%E4%BE%8B.pdf)
+
+测试上传英汉对照的示例文件:[英汉对照](https://resource-tx-cdn.xiaoeeye.com/appvod604qb9206/file/b_u_ck8n6b6ps1bshnkerp00/xvum17ma9n12r0.pdf?download_name=%E8%8B%B1%E6%B1%89%E5%AF%B9%E7%85%A7%E7%A4%BA%E4%BE%8B.pdf)
+
+文件来源:B站up主"Larry想做技术大佬"在公众号开源下载站提供
 
 
 

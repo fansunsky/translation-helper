@@ -66,7 +66,7 @@ npm run dev
 
 # 项目demo地址见以下链接
 
-[回译助手](http://14.103.134.75/)
+<a href="http://14.103.134.75/" target="_blank">回译助手</a>
 
 
 

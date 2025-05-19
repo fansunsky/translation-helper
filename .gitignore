@@ -2,3 +2,5 @@
 ./backend/venv
 ./**/.idea
 ./**/.vscode
+.env
+backend/text_list.db

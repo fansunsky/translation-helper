@@ -339,6 +339,10 @@ body, html, #app, .app-root, .main-container {
 }
 
 .upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* 保证上传区域和文件列表纵向排列 */
   flex: 1 1 0;
   min-width: 320px;
   max-width: 600px;
@@ -398,6 +402,58 @@ h3 {
 
 .upload-demo {
   width: 100%;
+  max-width: 100%;
+}
+
+/* 添加上传组件相关样式 */
+:deep(.el-upload-list) {
+  width: 100%;
+  overflow: visible !important;
+  margin-top: 10px;
+  padding-left: 0;
+}
+
+:deep(.el-upload-list__item) {
+  display: flex !important;
+  align-items: center;
+  max-width: 320px; /* 限制每个文件项的最大宽度，可根据实际调整 */
+  min-width: 0;
+}
+
+:deep(.el-upload-list__item .el-upload-list__item-name) {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 180px; /* 文件名最大宽度，超出省略 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:deep(.el-upload-list__item .el-progress) {
+  max-width: 60px; /* 进度条最大宽度 */
+  min-width: 40px;
+  margin: 0 4px;
+}
+
+:deep(.el-upload-list__item .el-upload-list__item-delete) {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 28px;         /* 统一宽度 */
+  height: 28px;        /* 统一高度 */
+  color: #909399 !important;
+  font-size: 18px !important;
+  margin-left: 8px;
+  cursor: pointer !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+:deep(.el-upload-list__item .el-upload-list__item-delete:hover) {
+  background: #f2f6fc;
+  color: #f56c6c !important;
 }
 
 .translations-list {
